@@ -4,6 +4,11 @@
 #' @export
 score_symbol_search <- function(df) {
   PACKAGE.VERSION <- packageVersion("RM2C2")
+  
+  if(df$game_name == "Symbol Search") {
+    
+  }
+  
   scored <- df %>% mutate(accuracy = ifelse(user_response == correct_response,1,0)) %>%
     mutate(PACKAGE.VERSION = PACKAGE.VERSION)
   return(scored)
