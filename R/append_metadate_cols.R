@@ -1,4 +1,4 @@
-#' RM2C2dev: Scoring, Summarizing
+#' RM2C2dev
 
 #' @name append_metadate_cols
 #' @param data class: data.frame
@@ -8,15 +8,12 @@
 #' @param timezone class: string
 #' @param append_rounded class: boolean
 #' @import tidyverse
-#' @import hms
 #' @import anytime
 #' @examples
 #' append_metadate_cols(data, time_var = "timestamp")
 #' @export
 append_metadate_cols <- function(data, time_var = "timestamp", time_format = "%m/%d/%Y", time_origin = "1970-01-01", timezone = Sys.timezone(), append_rounded = T) {
-  #' **************************************************
   #' parameter validation
-  #' **************************************************
   
   #' verify data passed in is data.frame or tibble
   if(is_data_frame_tibble(data)) {

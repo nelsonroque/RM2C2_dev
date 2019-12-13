@@ -2,7 +2,7 @@
 % Please edit documentation in R/append_metadate_cols.R
 \name{append_metadate_cols}
 \alias{append_metadate_cols}
-\title{RM2C2dev: Scoring, Summarizing}
+\title{RM2C2dev}
 \usage{
 append_metadate_cols(
   data,
@@ -27,7 +27,7 @@ append_metadate_cols(
 \item{append_rounded}{class: boolean}
 }
 \description{
-RM2C2dev: Scoring, Summarizing
+RM2C2dev
 }
 \examples{
 append_metadate_cols(data, time_var = "timestamp")

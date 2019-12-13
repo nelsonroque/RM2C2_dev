@@ -3,5 +3,4 @@
 export(is_data_frame_tibble)
 import(anytime)
 import(digest)
-import(hms)
 import(tidyverse)

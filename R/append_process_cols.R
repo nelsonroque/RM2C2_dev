@@ -1,4 +1,4 @@
-#' RM2C2dev: Scoring, Summarizing
+#' RM2C2dev
 
 #' @name append_process_cols
 #' @param data class: data.frame
@@ -10,10 +10,7 @@
 #' @export
 append_process_cols <- function(data, algo="md5") {
   
-  #' **************************************************
   #' parameter validation
-  #' **************************************************
-  #' 
   #' verify data passed in is data.frame or tibble
   if(is_data_frame_tibble(data)) {
     
