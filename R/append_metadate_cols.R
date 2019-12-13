@@ -1,5 +1,4 @@
 #' RM2C2dev
-
 #' @name append_metadate_cols
 #' @param data class: data.frame
 #' @param time_var class: string
@@ -10,7 +9,7 @@
 #' @import tidyverse
 #' @import anytime
 #' @examples
-#' append_metadate_cols(data, time_var = "timestamp")
+#' append_metadate_cols(data, time_var = 'timestamp')
 #' @export
 append_metadate_cols <- function(data, time_var = "timestamp", time_format = "%m/%d/%Y", time_origin = "1970-01-01", timezone = Sys.timezone(), append_rounded = T) {
   #' parameter validation
