@@ -4,8 +4,8 @@
 #' @param data class: data.frame
 #' @param time_var class: string
 #' @param time_format  class: string
-#' @param time_origin class:string
-#' @param timezone class Sys.timezone()
+#' @param time_origin class: string
+#' @param timezone class: string
 #' @param append_rounded class: boolean
 #' @import tidyverse
 #' @import hms

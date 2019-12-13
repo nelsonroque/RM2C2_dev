@@ -20,9 +20,9 @@ append_metadate_cols(
 
 \item{time_format}{class: string}
 
-\item{time_origin}{class:string}
+\item{time_origin}{class: string}
 
-\item{timezone}{class Sys.timezone()}
+\item{timezone}{class: string}
 
 \item{append_rounded}{class: boolean}
 }
