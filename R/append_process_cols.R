@@ -6,14 +6,16 @@
 #' @import tidyverse
 #' @import digest
 #' @examples
-#' append_process_cols <- function(data, algo="md5")
+#' append_process_cols(data, algo="md5")
 #' @export
 append_process_cols <- function(data, algo="md5") {
   
   #' **************************************************
   #' parameter validation
   #' **************************************************
-  if(is_tibble(data) | is.data.frame(data)) {
+  #' 
+  #' verify data passed in is data.frame or tibble
+  if(is_data_frame_tibble(data)) {
     
     #' generate MD5 checksum of `data`
     data_md5 <- digest::digest(data, algo=algo)
