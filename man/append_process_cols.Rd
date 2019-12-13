@@ -2,7 +2,7 @@
 % Please edit documentation in R/append_process_cols.R
 \name{append_process_cols}
 \alias{append_process_cols}
-\title{RM2C2_dev: Scoring, Summarizing}
+\title{RM2C2dev: Scoring, Summarizing}
 \usage{
 append_process_cols(data, algo = "md5")
 }
@@ -12,7 +12,7 @@ append_process_cols(data, algo = "md5")
 \item{algo}{class: string}
 }
 \description{
-RM2C2_dev: Scoring, Summarizing
+RM2C2dev: Scoring, Summarizing
 }
 \examples{
 append_process_cols(data, algo="md5")

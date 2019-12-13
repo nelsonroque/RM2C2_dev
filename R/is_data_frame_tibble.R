@@ -1,4 +1,4 @@
-#' RM2C2_dev: Scoring, Summarizing
+#' RM2C2dev: Scoring, Summarizing
 
 #' @name is_data_frame_tibble
 #' @param data class: data.frame or tibble

@@ -1,14 +1,17 @@
-#' RM2C2_dev: Scoring, Summarizing
+#' RM2C2dev: Scoring, Summarizing
 
 #' @name append_metadate_cols
-#' @param df class: dataframe
+#' @param data class: data.frame
 #' @param time_var class: string
 #' @param time_format  class: string
+#' @param time_origin class:string
+#' @param timezone class Sys.timezone()
+#' @param append_rounded class: boolean
 #' @import tidyverse
 #' @import hms
 #' @import anytime
 #' @examples
-#' append_metadate_cols(df)
+#' append_metadate_cols(data, time_var = "timestamp")
 #' @export
 append_metadate_cols <- function(data, time_var = "timestamp", time_format = "%m/%d/%Y", time_origin = "1970-01-01", timezone = Sys.timezone(), append_rounded = T) {
   #' **************************************************

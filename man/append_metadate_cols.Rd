@@ -2,7 +2,7 @@
 % Please edit documentation in R/append_metadate_cols.R
 \name{append_metadate_cols}
 \alias{append_metadate_cols}
-\title{RM2C2_dev: Scoring, Summarizing}
+\title{RM2C2dev: Scoring, Summarizing}
 \usage{
 append_metadate_cols(
   data,
@@ -14,15 +14,21 @@ append_metadate_cols(
 )
 }
 \arguments{
+\item{data}{class: data.frame}
+
 \item{time_var}{class: string}
 
 \item{time_format}{class: string}
 
-\item{df}{class: dataframe}
+\item{time_origin}{class:string}
+
+\item{timezone}{class Sys.timezone()}
+
+\item{append_rounded}{class: boolean}
 }
 \description{
-RM2C2_dev: Scoring, Summarizing
+RM2C2dev: Scoring, Summarizing
 }
 \examples{
-append_metadate_cols(df)
+append_metadate_cols(data, time_var = "timestamp")
 }

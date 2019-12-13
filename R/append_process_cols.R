@@ -1,4 +1,4 @@
-#' RM2C2_dev: Scoring, Summarizing
+#' RM2C2dev: Scoring, Summarizing
 
 #' @name append_process_cols
 #' @param data class: data.frame

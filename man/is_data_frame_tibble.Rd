@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_data_frame_tibble.R
 \name{is_data_frame_tibble}
 \alias{is_data_frame_tibble}
-\title{RM2C2_dev: Scoring, Summarizing}
+\title{RM2C2dev: Scoring, Summarizing}
 \usage{
 is_data_frame_tibble(data)
 }
@@ -10,7 +10,7 @@ is_data_frame_tibble(data)
 \item{data}{class: data.frame or tibble}
 }
 \description{
-RM2C2_dev: Scoring, Summarizing
+RM2C2dev: Scoring, Summarizing
 }
 \examples{
 is_data_frame_tibble(data)
