@@ -113,10 +113,13 @@ RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json"
 # PIPELINE TIME! ====
 
 ss_pipeline <- task_processing_pipeline(symbol_search_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
-ss_synapse_pipeline <- task_processing_pipeline(data = "", source = "synapse", 
-                                                score = T, summary = T, experimental = T, 
+ss_synapse_pipeline <- task_processing_pipeline(source = "synapse", 
+                                                score = T, 
+                                                summary = T, 
+                                                experimental = T, 
                                                 group_var = c("participant_id"), 
                                                 synapse_email = synapse_email, 
                                                 synapse_pw = synapse_pw, 
-                                                synapse_cogtask_data_table_id = synapse_cogtask_data_table_id, 
-                                                synapse_survey_data_table_id = synapse_survey_data_table_id)
+                                                uuid_col_name = "symbol_cogtask_uuid",
+                                                synapse_cogtask_id = synapse_cogtask_data_table_id, 
+                                                synapse_survey_id = synapse_survey_data_table_id)

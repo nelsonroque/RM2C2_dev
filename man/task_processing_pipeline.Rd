@@ -12,8 +12,8 @@ task_processing_pipeline(
   experimental = T,
   group_var = c("participant_id"),
   uuid_col_name = NA,
-  synapse_cogtask_data_table_id = NA,
-  synapse_survey_data_table_id = NA,
+  synapse_cogtask_id = NA,
+  synapse_survey_id = NA,
   synapse_email = NA,
   synapse_pw = NA,
   ...
