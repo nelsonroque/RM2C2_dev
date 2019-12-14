@@ -7,25 +7,31 @@ summary_symbol_search <- function(data, group_var, outcomes = "all", lure_label 
   summary_data <- data %>%
     group_by_(.dots = group_var) %>%
     mutate(accuracy = ifelse(user_response == correct_response,1,0)) %>%
-    summarise(median.RT.all_trials = median(response_time, na.rm=T),
-              median.RT.accurate_trials = median(response_time[accuracy == 1], na.rm=T),
-              median.RT.error_trials = median(response_time[accuracy == 0], na.rm=T),
-              median.RT.lure_trials = median(response_time[trial_type == lure_label], na.rm=T),
-              median.RT.normal_trials = median(response_time[trial_type == normal_label], na.rm=T),
-              sd.RT.all_trials = sd(response_time, na.rm=T),
-              sd.RT.accurate_trials = sd(response_time[accuracy == 1], na.rm=T),
-              sd.RT.error_trials = sd(response_time[accuracy == 0], na.rm=T),
-              sd.RT.lure_trials = sd(response_time[trial_type == lure_label], na.rm=T),
-              sd.RT.normal_trials = sd(response_time[trial_type == normal_label], na.rm=T),
-              proportion.accurate.trials = sum(accuracy)/n(),
-              proportion.error.trials = (n() - sum(accuracy))/n(),
-              n.filtered.trials = sum(is.na(response_time)),
-              n.accurate.trials = sum(accuracy),
-              n.error.trials = n() - sum(accuracy),
-              n.lure.trials = sum(trial_type == lure_label),
-              n.normal.trials = sum(trial_type == normal_label),
-              # correct / incorrect tally for each of the breakdowns
-              n.trials = n())
+    summarise(median_RT.accurate_trials = median(response_time[accuracy == 1], na.rm=T),
+              median_RT.error_trials = median(response_time[accuracy == 0], na.rm=T),
+              n_accurate.trials = sum(accuracy),
+              n_error.trials = n() - sum(accuracy),
+              n_trials = n())
+      
+      # median_RT.all_trials = median(response_time, na.rm=T),
+      #         median_RT.accurate_trials = median(response_time[accuracy == 1], na.rm=T),
+      #         median_RT.error_trials = median(response_time[accuracy == 0], na.rm=T),
+      #         median_RT.lure_trials = median(response_time[trial_type == lure_label], na.rm=T),
+      #         median_RT.normal_trials = median(response_time[trial_type == normal_label], na.rm=T),
+      #         sd.RT.all_trials = sd(response_time, na.rm=T),
+      #         sd.RT.accurate_trials = sd(response_time[accuracy == 1], na.rm=T),
+      #         sd.RT.error_trials = sd(response_time[accuracy == 0], na.rm=T),
+      #         sd.RT.lure_trials = sd(response_time[trial_type == lure_label], na.rm=T),
+      #         sd.RT.normal_trials = sd(response_time[trial_type == normal_label], na.rm=T),
+      #         proportion_accurate.trials = sum(accuracy)/n(),
+      #         proportion_error.trials = (n() - sum(accuracy))/n(),
+      #         n_filtered.trials = sum(is.na(response_time)),
+      #         n_accurate.trials = sum(accuracy),
+      #         n_error.trials = n() - sum(accuracy),
+      #         n_lure.trials = sum(trial_type == lure_label),
+      #         n_normal.trials = sum(trial_type == normal_label),
+      #         # correct / incorrect tally for each of the breakdowns
+      #         n_trials = n())
   
   # add task name to column names
   len_group_var = length(group_var)
