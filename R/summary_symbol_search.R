@@ -33,6 +33,9 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
                     n_normal_trials = sum(trial_type == normal_label))
           
         summary_data <- summary_data %>% full_join(exp_summary_data)
+        
+        # add summary attribute
+        summary_data <- add_data_tag(summary_data, tag_name="is_m2c2_experimental_summary", tag_value=T)
       }
       
     } else {
