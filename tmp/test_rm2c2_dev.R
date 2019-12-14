@@ -103,8 +103,14 @@ RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_scored", tag_value=T)
 RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_summary", tag_value=T)
 RM2C2dev::is_data_tag_valid(ss_summary, tag_name = "is_m2c2_summary", tag_value=T)
 RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_summary", tag_value=T)
+RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_experimental_summary", tag_value=T)
 
 # save data as json
 RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json")
 
 # post json as R object or as file to API endpoint
+
+# PIPELINE TIME! ====
+
+ss_pipeline <- task_processing_pipeline(symbol_search_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
+  
