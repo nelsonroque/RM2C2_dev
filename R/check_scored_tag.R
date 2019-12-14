@@ -1,8 +1,8 @@
 #' RM2C2dev
-#' @name check_scored_tag
+#' @name is_data_scored
 #' @export
 #' @import tidyverse
-check_scored_tag <- function(data) {
+is_data_scored <- function(data) {
   # check scored attribute
   if(attr(data, 'is_m2c2_scored') == T) {
     v <- T

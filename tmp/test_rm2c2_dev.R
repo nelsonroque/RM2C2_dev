@@ -91,7 +91,7 @@ symbol_search_test_data <- expand.grid(participant_id = seq(100,150,1), session_
 
 # add and check attributes
 symbol_search_test_data2 <- RM2C2dev::add_scored_tag(symbol_search_test_data)
-RM2C2dev::check_scored_tag(symbol_search_test_data2)
+RM2C2dev::is_data_scored(symbol_search_test_data2)
 
 #ss_scored <- RM2C2dev::score_symbol_search(cc)
 ss_summary <- RM2C2dev::summary_symbol_search(symbol_search_test_data, group_var=c("participant_id", "session_id"))
