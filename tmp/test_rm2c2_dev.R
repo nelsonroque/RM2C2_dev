@@ -98,6 +98,7 @@ ss_scored <- RM2C2dev::score_symbol_search(symbol_search_test_data)
 ss_summary <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"))
 ss_summary_exp <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"), experimental = T)
 
+# verify attributes added to data.frames after scoring
 RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_scored", tag_value=T)
 RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_summary", tag_value=T)
 RM2C2dev::is_data_tag_valid(ss_summary, tag_name = "is_m2c2_summary", tag_value=T)
