@@ -11,7 +11,6 @@ task_processing_pipeline(
   summary = T,
   experimental = T,
   group_var = c("participant_id"),
-  filename = NA,
   uuid_col_name = NA,
   synapse_cogtask_data_table_id = NA,
   synapse_survey_data_table_id = NA,
