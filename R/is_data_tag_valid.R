@@ -4,7 +4,7 @@
 #' @import tidyverse
 is_data_tag_valid <- function(data, tag_name = "", tag_value = T) {
   # check scored attribute
-  if(attr(data, tag_name) == tag_value) {
+  if(attr(data, tag_name) == tag_value & !is.null(attr(data, tag_name))) {
     v <- T
   } else {
     v <- F
