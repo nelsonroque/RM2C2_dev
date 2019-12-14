@@ -112,8 +112,11 @@ RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json"
 
 # PIPELINE TIME! ====
 
-ss_pipeline <- task_processing_pipeline(symbol_search_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
-ss_synapse_pipeline <- task_processing_pipeline(source = "synapse", 
+# data frame that was loaded into Environment
+ss_pipeline <- RM2C2dev::task_processing_pipeline(symbol_search_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
+
+# directly from synapse
+ss_synapse_pipeline <- RM2C2dev::task_processing_pipeline(source = "synapse", 
                                                 score = T, 
                                                 summary = T, 
                                                 experimental = T, 
@@ -123,3 +126,5 @@ ss_synapse_pipeline <- task_processing_pipeline(source = "synapse",
                                                 uuid_col_name = "symbol_cogtask_uuid",
                                                 synapse_cogtask_id = synapse_cogtask_data_table_id, 
                                                 synapse_survey_id = synapse_survey_data_table_id)
+
+# from SRC servers
