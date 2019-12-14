@@ -15,7 +15,8 @@ task_processing_pipeline(
   synapse_cogtask_data_table_id = NA,
   synapse_survey_data_table_id = NA,
   synapse_email = NA,
-  synapse_pw = NA
+  synapse_pw = NA,
+  ...
 )
 }
 \description{
