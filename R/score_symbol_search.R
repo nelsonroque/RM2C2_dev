@@ -7,6 +7,9 @@ score_symbol_search <- function(data) {
   if(is_data_frame_tibble(data)) {
     scored <- data %>% 
       mutate(accuracy = ifelse(user_response == correct_response, 1, 0))
+    
+    # add scored attribute
+    scored <- add_scored_tag(scored)
   } else {
     # raise error if not a data.frame or tibble
     stop("`data` is not a data.frame or tibble. Please try again.")
