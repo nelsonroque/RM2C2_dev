@@ -30,5 +30,15 @@ append_metadate_cols(
 RM2C2dev
 }
 \examples{
-append_metadate_cols(data, time_var = "timestamp")
+append_metadate_cols(data, time_var = 'timestamp')
+parameter validation
+verify data passed in is data.frame or tibble
+append date features
+pass in time_stamp as string and convert to date time object (as.POSIXct)
+append date and time features
+add weekend label
+append rounded date timestamps if requested
+append rounded date timestamps if requested
+append rounded timestamps if requested
+if data is valid, stop code execution and present an error message
 }

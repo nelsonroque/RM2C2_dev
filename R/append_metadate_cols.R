@@ -1,5 +1,6 @@
 #' RM2C2dev
 #' @name append_metadate_cols
+#' @export
 #' @param data class: data.frame
 #' @param time_var class: string
 #' @param time_format  class: string
@@ -10,10 +11,8 @@
 #' @import anytime
 #' @examples
 #' append_metadate_cols(data, time_var = 'timestamp')
-#' @export
 append_metadate_cols <- function(data, time_var = "timestamp", time_format = "%m/%d/%Y", time_origin = "1970-01-01", timezone = Sys.timezone(), append_rounded = T) {
   #' parameter validation
-  
   #' verify data passed in is data.frame or tibble
   if(is_data_frame_tibble(data)) {
     

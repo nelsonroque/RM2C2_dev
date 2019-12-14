@@ -1,12 +1,12 @@
 #' RM2C2dev
 #' @name append_process_cols
+#' @export
 #' @param data class: data.frame
 #' @param algo class: string
 #' @import tidyverse
 #' @import digest
 #' @examples
-#' append_process_cols(data, algo="md5")
-#' @export
+#' append_process_cols(data, algo='md5')
 append_process_cols <- function(data, algo="md5") {
   #' parameter validation
   #' verify data passed in is data.frame or tibble
@@ -19,6 +19,8 @@ append_process_cols <- function(data, algo="md5") {
     data_stamped <- data %>% 
       mutate(m2c2_processing_hash = data_md5) %>%
       mutate(m2c2_processing_timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S"))
+    
+    #' add package version
     
   } else {
     

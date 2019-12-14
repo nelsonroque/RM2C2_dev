@@ -15,5 +15,11 @@ append_process_cols(data, algo = "md5")
 RM2C2dev
 }
 \examples{
-append_process_cols(data, algo="md5")
+append_process_cols(data, algo='md5')
+parameter validation
+verify data passed in is data.frame or tibble
+generate MD5 checksum of `data`
+append MD5 checksum and file processing timestamp to `data`
+add package version
+if data is valid, stop code execution and present an error message
 }

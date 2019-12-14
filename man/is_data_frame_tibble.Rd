@@ -7,11 +7,12 @@
 is_data_frame_tibble(data)
 }
 \arguments{
-\item{data}{class: data.frame or tibble}
+\item{data}{class: data.frame}
 }
 \description{
 RM2C2dev
 }
 \examples{
 is_data_frame_tibble(data)
+check if data is tibble or data.frame
 }
