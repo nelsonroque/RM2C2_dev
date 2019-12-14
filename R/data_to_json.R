@@ -5,7 +5,7 @@
 data_to_json <- function(data, filename="") {
   x <- toJSON(unname(split(data, 1:nrow(data))))
 
-  if(filename != "") {
+  if(filename != "" & !is.na(filename) & !is.null(filename)) {
     print(paste0("Writing json file: ", filename))
     write(x, filename)
   }

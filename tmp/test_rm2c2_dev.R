@@ -1,3 +1,6 @@
+# install library from Github
+devtools::install_github("nelsonroque/RM2C2_dev")
+
 # load library
 library(RM2C2dev)
 
@@ -101,6 +104,6 @@ RM2C2dev::is_data_tag_valid(ss_summary, tag_name = "is_m2c2_summary", tag_value=
 RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_summary", tag_value=T)
 
 # save data as json
-RM2C2dev::data_to_json(ss_scored, filename = "test.json")
+RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json")
 
 # post json as R object or as file to API endpoint
