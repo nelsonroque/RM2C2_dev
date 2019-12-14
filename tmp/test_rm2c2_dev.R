@@ -94,3 +94,13 @@ symbol_search_test_data <- expand.grid(participant_id = seq(100,150,1), session_
 ss_scored <- RM2C2dev::score_symbol_search(symbol_search_test_data)
 ss_summary <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"))
 ss_summary_exp <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"), experimental = T)
+
+RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_scored", tag_value=T)
+RM2C2dev::is_data_tag_valid(ss_scored, tag_name = "is_m2c2_summary", tag_value=T)
+RM2C2dev::is_data_tag_valid(ss_summary, tag_name = "is_m2c2_summary", tag_value=T)
+RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_summary", tag_value=T)
+
+# save data as json
+RM2C2dev::data_to_json(ss_scored, filename = "test.json")
+
+# post json as R object or as file to API endpoint
