@@ -83,11 +83,11 @@ RM2C2dev::is_col_present(bb, "phoneInfo")
 # GENERATE TEST DATA =====
 
 symbol_search_test_data <- expand.grid(participant_id = seq(100,150,1), session_id = seq(1,84,1)) %>%
-  mutate(user_response = sample(c(TRUE, FALSE), size=1),
-         correct_response = sample(c(TRUE, FALSE), size=1)) %>%
+  as.data.frame(.) %>%
+  mutate(user_response = sample(x=c(0,1), size=nrow(.), replace=T),
+         correct_response = sample(x=c(0,1), size=nrow(.), replace=T)) %>%
   mutate(response_time = rnorm(n=nrow(.), 500, 200)) %>%
   mutate(game_name = "symbol_search")
 
 #ss_scored <- RM2C2dev::score_symbol_search(cc)
-ss_summary <- RM2C2dev::summary_symbol_search(symbol_search_test_data, group_var="session_id")
-
+ss_summary <- RM2C2dev::summary_symbol_search(symbol_search_test_data, group_var=c("participant_id", "session_id"))
