@@ -13,7 +13,7 @@ score_symbol_search <- function(data) {
   }
   
   # add scored attribute
-  scored <- add_scored_tag(scored)
+  scored <- add_data_tag(scored, tag_name="is_m2c2_scored", tag_value=T)
   
   return(scored)
 }
