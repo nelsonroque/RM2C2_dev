@@ -83,18 +83,13 @@ RM2C2dev::is_col_present(bb, "phoneInfo")
 
 # test_file <- RM2C2dev::read_m2c2_local(file.choose())
 
-# GENERATE TEST DATA =====
+# WORKE TEST DATA =====
 
-symbol_search_test_data <- expand.grid(participant_id = seq(100,150,1), session_id = seq(1,84,1)) %>%
-  as.data.frame(.) %>%
-  mutate(user_response = sample(x=c(0,1), size=nrow(.), replace=T),
-         correct_response = sample(x=c(0,1), size=nrow(.), replace=T),
-         trial_type = sample(x=c("LURE", "NORMAL"), size=nrow(.), replace=T)) %>%
-  mutate(response_time = rnorm(n=nrow(.), 500, 200)) %>%
-  mutate(game_name = "symbol_search")
+# generate test data
+ss_test_data <- RM2C2dev::make_test_data("symbol_search", n=10, sessions=10)
 
 # score and summarise data
-ss_scored <- RM2C2dev::score_symbol_search(symbol_search_test_data)
+ss_scored <- RM2C2dev::score_symbol_search(ss_test_data)
 ss_summary <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"))
 ss_summary_exp <- RM2C2dev::summary_symbol_search(ss_scored, group_var=c("participant_id"), experimental = T)
 
@@ -113,7 +108,7 @@ RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json"
 # PIPELINE TIME! ====
 
 # data frame that was loaded into Environment
-ss_pipeline <- RM2C2dev::task_processing_pipeline(symbol_search_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
+ss_pipeline <- RM2C2dev::task_processing_pipeline(ss_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
 
 # directly from synapse
 ss_synapse_pipeline <- RM2C2dev::task_processing_pipeline(source = "synapse", 
@@ -128,3 +123,11 @@ ss_synapse_pipeline <- RM2C2dev::task_processing_pipeline(source = "synapse",
                                                 synapse_survey_id = synapse_survey_data_table_id)
 
 # from SRC servers
+
+# VERIFY HASHES =====
+
+# verify that data scored 'manually' step-wise, yields the same data as if scored in the automated pipeline
+ss_pipeline$scored$m2c2_processing_hash[1] == ss_scored$m2c2_processing_hash[1]
+ss_pipeline$summary$m2c2_processing_hash[1] == ss_summary$m2c2_processing_hash[1]
+ss_pipeline$experimental$m2c2_processing_hash[1] == ss_summary_exp$m2c2_processing_hash[1]
+

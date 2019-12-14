@@ -53,8 +53,12 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
   # make sure that all non-ID columns have a prefix that is unique to the task
   summary_data <- append_colname_prefix(summary_data, group_var, var_prefix)
   
+  # add processing hash and timestamp
+  summary_data <- summary_data %>%
+    append_process_cols()
+  
   # add summary attribute
   summary_data <- add_data_tag(summary_data, tag_name="is_m2c2_summary", tag_value=T)
-  
+
   return(summary_data)
 }

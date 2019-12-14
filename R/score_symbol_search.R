@@ -18,8 +18,12 @@ score_symbol_search <- function(data) {
     stop("`data` is not a data.frame or tibble. Please try again.")
   }
   
+  # add processing hash and timestamp
+  scored <- scored %>%
+    append_process_cols()
+  
   # add scored attribute
   scored <- add_data_tag(scored, tag_name="is_m2c2_scored", tag_value=T)
-  
+
   return(scored)
 }
