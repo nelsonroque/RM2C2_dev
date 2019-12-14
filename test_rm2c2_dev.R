@@ -47,6 +47,9 @@ RM2C2dev::download_server_zip(url = server_url,
 
 # DOWNLOADING DATA FROM Sage's Synapse Platform =====
 
+# first install synapser package if not present
+RM2C2dev::install_synapser()
+
 # get a listing of all M2C2 Synapse Tables available to download
 aa <- RM2C2dev::get_synapse_tables(synapse_email=synapse_email, synapse_pw=synapse_pw, synapse_project_id = synapse_m2c2_project_id)
 #View(aa$tables)
@@ -76,5 +79,15 @@ RM2C2dev::is_col_present(bb, "phoneInfo")
 # READ LOCAL FILE =====
 
 # test_file <- RM2C2dev::read_m2c2_local(file.choose())
-ss_scored <- RM2C2dev::score_symbol_search(cc)
-#ss_summary <- RM2C2dev::summary_symbol_search(ss_scored, group_var="session_id")
+
+# GENERATE TEST DATA =====
+
+symbol_search_test_data <- expand.grid(participant_id = seq(100,150,1), session_id = seq(1,84,1)) %>%
+  mutate(user_response = sample(c(TRUE, FALSE), size=1),
+         correct_response = sample(c(TRUE, FALSE), size=1)) %>%
+  mutate(response_time = rnorm(n=nrow(.), 500, 200)) %>%
+  mutate(game_name = "symbol_search")
+
+#ss_scored <- RM2C2dev::score_symbol_search(cc)
+ss_summary <- RM2C2dev::summary_symbol_search(symbol_search_test_data, group_var="session_id")
+

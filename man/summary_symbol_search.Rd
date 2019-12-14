@@ -7,7 +7,8 @@
 summary_symbol_search(
   data,
   group_var,
-  outcomes = "all",
+  var_prefix = "symbol_search",
+  basic_outcomes = T,
   lure_label = "LURE",
   normal_label = "NORMAL"
 )

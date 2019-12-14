@@ -15,7 +15,7 @@ download_synapse_table_all <- function(synapse_email = NA, synapse_pw = NA, syna
     print("For the latest version of `synapser`, run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
     
     #' login to synapse
-    synLogin(email = synapse_email, password = synapse_pw, rememberMe = T)
+    synapser::synLogin(email = synapse_email, password = synapse_pw, rememberMe = T)
     
     #' build the query
     query <- sprintf("select * from %s", synapse_id)
