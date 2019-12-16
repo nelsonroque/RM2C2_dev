@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_file_ext.R
 \name{get_file_ext}
 \alias{get_file_ext}
-\title{RM2C2: Scoring, Summarizing}
+\title{RM2C2dev}
 \usage{
 get_file_ext(filepath)
 }
@@ -10,10 +10,8 @@ get_file_ext(filepath)
 \item{filepath}{class: string}
 }
 \description{
-RM2C2: Scoring, Summarizing
+RM2C2dev
 }
 \examples{
 get_file_ext("C:/filepath.csv")
 }
-\keyword{cognition}
-\keyword{m2c2,}

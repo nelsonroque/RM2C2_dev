@@ -2,10 +2,17 @@
 % Please edit documentation in R/summary_symbol_search.R
 \name{summary_symbol_search}
 \alias{summary_symbol_search}
-\title{RM2C2: Scoring, Summarizing}
+\title{RM2C2dev}
 \usage{
-summary_symbol_search(df, group_var)
+summary_symbol_search(
+  data,
+  group_var,
+  var_prefix = "symbol_search",
+  experimental = F,
+  lure_label = "LURE",
+  normal_label = "NORMAL"
+)
 }
 \description{
-RM2C2: Scoring, Summarizing
+RM2C2dev
 }

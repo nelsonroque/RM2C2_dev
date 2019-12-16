@@ -2,10 +2,10 @@
 % Please edit documentation in R/score_symbol_search.R
 \name{score_symbol_search}
 \alias{score_symbol_search}
-\title{RM2C2: Scoring, Summarizing}
+\title{RM2C2dev}
 \usage{
-score_symbol_search(df)
+score_symbol_search(data)
 }
 \description{
-RM2C2: Scoring, Summarizing
+RM2C2dev
 }
