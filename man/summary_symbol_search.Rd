@@ -4,14 +4,8 @@
 \alias{summary_symbol_search}
 \title{RM2C2dev}
 \usage{
-summary_symbol_search(
-  data,
-  group_var,
-  var_prefix = "symbol_search",
-  experimental = F,
-  lure_label = "LURE",
-  normal_label = "NORMAL"
-)
+summary_symbol_search(data, group_var, var_prefix = "symbol_search",
+  experimental = F, lure_label = "LURE", normal_label = "NORMAL")
 }
 \description{
 RM2C2dev

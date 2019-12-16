@@ -4,14 +4,9 @@
 \alias{append_metadate_cols}
 \title{RM2C2dev}
 \usage{
-append_metadate_cols(
-  data,
-  time_var = "timestamp",
-  time_format = "\%m/\%d/\%Y",
-  time_origin = "1970-01-01",
-  timezone = Sys.timezone(),
-  append_rounded = T
-)
+append_metadate_cols(data, time_var = "timestamp",
+  time_format = "\%m/\%d/\%Y", time_origin = "1970-01-01",
+  timezone = Sys.timezone(), append_rounded = T)
 }
 \arguments{
 \item{data}{class: data.frame}

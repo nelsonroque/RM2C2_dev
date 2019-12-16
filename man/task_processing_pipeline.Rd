@@ -4,20 +4,10 @@
 \alias{task_processing_pipeline}
 \title{RM2C2dev}
 \usage{
-task_processing_pipeline(
-  data,
-  source = "data.frame",
-  score = T,
-  summary = T,
-  experimental = T,
-  group_var = c("participant_id"),
-  uuid_col_name = NA,
-  synapse_cogtask_id = NA,
-  synapse_survey_id = NA,
-  synapse_email = NA,
-  synapse_pw = NA,
-  ...
-)
+task_processing_pipeline(data, source = "data.frame", score = T,
+  summary = T, experimental = T, group_var = c("participant_id"),
+  uuid_col_name = NA, synapse_cogtask_id = NA,
+  synapse_survey_id = NA, synapse_email = NA, synapse_pw = NA, ...)
 }
 \description{
 RM2C2dev
