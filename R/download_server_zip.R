@@ -1,5 +1,6 @@
 #' RM2C2dev
 #' @name download_server_zip
+#' @export
 #' @param url class: string
 #' @param params class: list
 #' @param save_filename class: string
@@ -10,7 +11,7 @@
 #' @import httr
 #' @examples
 #' download_server_zip(url, params, save_filename, overwrite_zip=T, unzip=T, remove_zip=F)
-#' @export
+
 download_server_zip <- function(url, params, save_filename, overwrite_zip=F, unzip=T, remove_zip=F) {
   
   # print message to echo input

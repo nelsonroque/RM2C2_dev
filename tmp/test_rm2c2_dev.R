@@ -41,11 +41,11 @@ login <- list(
 )
 
 # download zip file
-RM2C2dev::download_server_zip(url = server_url, 
+download_server_zip(url = server_url, 
                               params = login, 
                               save_filename = server_zip_outname, 
                               overwrite_zip=T, 
-                              unzip=F, 
+                              unzip=T, 
                               remove_zip=T)
 
 # DOWNLOADING DATA FROM Sage's Synapse Platform =====
@@ -54,18 +54,21 @@ RM2C2dev::download_server_zip(url = server_url,
 RM2C2dev::install_synapser()
 
 # get a listing of all M2C2 Synapse Tables available to download
-aa <- RM2C2dev::get_synapse_tables(synapse_email=synapse_email, synapse_pw=synapse_pw, synapse_project_id = synapse_m2c2_project_id)
+aa <- RM2C2dev::get_synapse_tables(synapse_email=synapse_email, synapse_pw=synapse_pw, 
+                                   synapse_project_id = synapse_m2c2_project_id)
 #View(aa$tables)
 #aa$synapse_objects
 
 # get raw synapse table of survey data containing task uuids
-bb <- RM2C2dev::download_synapse_table_all(synapse_email=synapse_email, synapse_pw=synapse_pw, synapse_id=synapse_survey_data_table_id)
+bb <- RM2C2dev::download_synapse_table_all(synapse_email=synapse_email, synapse_pw=synapse_pw, 
+                                           synapse_id=synapse_survey_data_table_id)
 
 # get unique UUIDs for each cog task
 task_uuids <- RM2C2dev::get_unique_values(bb$symbol_cogtask_uuid)
 
 # get raw synapse table of cog task data
-cc <- RM2C2dev::download_synapse_cogtask_table_all(synapse_email=synapse_email, synapse_pw=synapse_pw, synapse_id=synapse_cogtask_data_table_id, uuids = task_uuids)
+cc <- RM2C2dev::download_synapse_cogtask_table_all(synapse_email=synapse_email, synapse_pw=synapse_pw, 
+                                                   synapse_id=synapse_cogtask_data_table_id, uuids = task_uuids)
 
 # UTILITIES =====
 
@@ -101,14 +104,14 @@ RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_summary", tag_va
 RM2C2dev::is_data_tag_valid(ss_summary_exp, tag_name = "is_m2c2_experimental_summary", tag_value=T)
 
 # save data as json
-RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nar09/Desktop/test.json")
+RM2C2dev::data_to_json(ss_summary, filename = "C:/Users/nur375/Desktop/test.json")
 
 # post json as R object or as file to API endpoint
 
 # PIPELINE TIME! ====
 
 # data frame that was loaded into Environment
-ss_pipeline <- RM2C2dev::task_processing_pipeline(ss_test_data, source = "data.frame", score = T, summary= T, experimental = T, group_var = c("participant_id"))
+ss_pipeline <- RM2C2dev::task_processing_pipeline(ss_test_data, source = "data.frame", score = T, summary= T,  experimental = T, group_var = c("participant_id"))
 
 # directly from synapse
 ss_synapse_pipeline <- RM2C2dev::task_processing_pipeline(source = "synapse", 
