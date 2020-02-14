@@ -13,7 +13,8 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
       # produce primary outcome summary
       summary_data <- data %>%
         group_by_(.dots = group_var) %>%
-        summarise(median_response_time_correct_trials = median(response_time[accuracy == 1], na.rm=T),
+        summarise(median_response_time_all_trials = median(response_time, na.rm=T),
+                  median_response_time_correct_trials = median(response_time[accuracy == 1], na.rm=T),
                   median_response_time_error_trials = median(response_time[accuracy == 0], na.rm=T),
                   n_accurate_trials = sum(accuracy),
                   n_error_trials = n() - sum(accuracy),

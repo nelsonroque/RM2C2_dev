@@ -4,8 +4,14 @@
 \alias{download_server_zip}
 \title{RM2C2dev}
 \usage{
-download_server_zip(url, params, save_filename, overwrite_zip = F,
-  unzip = T, remove_zip = F)
+download_server_zip(
+  url,
+  params,
+  save_filename,
+  overwrite_zip = F,
+  unzip = T,
+  remove_zip = F
+)
 }
 \arguments{
 \item{url}{class: string}
@@ -25,4 +31,7 @@ RM2C2dev
 }
 \examples{
 download_server_zip(url, params, save_filename, overwrite_zip=T, unzip=T, remove_zip=F)
+make POST request and save zip file to disk
+unzip downloaded zip file if requested
+remove zip if requested
 }

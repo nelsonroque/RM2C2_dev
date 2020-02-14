@@ -4,8 +4,11 @@
 \alias{get_synapse_tables}
 \title{RM2C2dev}
 \usage{
-get_synapse_tables(synapse_email = NA, synapse_pw = NA,
-  synapse_project_id = NA)
+get_synapse_tables(
+  synapse_email = NA,
+  synapse_pw = NA,
+  synapse_project_id = NA
+)
 }
 \arguments{
 \item{synapse_email}{class: string}

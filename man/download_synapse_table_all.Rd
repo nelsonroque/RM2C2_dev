@@ -6,19 +6,20 @@
 \alias{download_synapse_cogtask_table_all}
 \title{RM2C2dev}
 \usage{
-download_synapse_cogtask_table_all(synapse_email = NA, synapse_pw = NA,
-  synapse_id = NA, uuids = NA)
+download_synapse_cogtask_table_all(
+  synapse_email = NA,
+  synapse_pw = NA,
+  synapse_id = NA,
+  uuids = NA
+)
 
-download_synapse_table_all(synapse_email = NA, synapse_pw = NA,
-  synapse_id = NA)
+download_synapse_table_all(
+  synapse_email = NA,
+  synapse_pw = NA,
+  synapse_id = NA
+)
 }
 \arguments{
-\item{synapse_email}{class: string}
-
-\item{synapse_pw}{class: string}
-
-\item{synapse_id}{class: string}
-
 \item{synapse_email}{class: string}
 
 \item{synapse_pw}{class: string}
