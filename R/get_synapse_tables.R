@@ -10,7 +10,6 @@
 get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA) {
   if(!require(synapser)) {
     print("ERROR: Missing `synapser` package. Please run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
-    RM2C2dev::install_synapser()
   } else {
     print("For the latest version of `synapser`, run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
     
@@ -18,7 +17,7 @@ get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_proj
     synLogin(email = synapse_email, password = synapse_pw, rememberMe = T)
     
     #' load all objects
-    iterator <- synGetChildren(synapse_project_id, 
+    iterator <- synapser::synGetChildren(synapse_project_id, 
                                includeTypes=list("folder", "file", "table", "link", "entityview", "dockerrepo"), 
                                sortBy="CREATED_ON")
     

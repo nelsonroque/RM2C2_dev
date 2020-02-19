@@ -32,7 +32,7 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
                     sd_response_time_normal_trials = sd(response_time[trial_type == normal_label], na.rm=T),
                     n_lure_trials = sum(trial_type == lure_label),
                     n_normal_trials = sum(trial_type == normal_label))
-          
+        
         summary_data <- summary_data %>% full_join(exp_summary_data)
         
         # add summary attribute
@@ -50,7 +50,7 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
     # raise error if not a data.frame or tibble
     stop("`data` is not a data.frame or tibble. Please try again.")
   }
-
+  
   # make sure that all non-ID columns have a prefix that is unique to the task
   summary_data <- append_colname_prefix(summary_data, group_var, var_prefix)
   
@@ -60,6 +60,6 @@ summary_symbol_search <- function(data, group_var, var_prefix = "symbol_search",
   
   # add summary attribute
   summary_data <- add_data_tag(summary_data, tag_name="is_m2c2_summary", tag_value=T)
-
+  
   return(summary_data)
 }
