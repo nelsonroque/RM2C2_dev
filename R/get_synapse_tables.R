@@ -5,7 +5,6 @@
 #' @param synapse_pw class: string
 #' @param synapse_project_id class: string
 #' @import tidyverse
-#' @import synapser
 #' @examples
 #' get_synapse_tables(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA)
 get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA) {
