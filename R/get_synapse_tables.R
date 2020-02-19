@@ -28,16 +28,8 @@ get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_proj
     #' create blank data.frame for merging
     data_tabs <- data.frame()
     for(i in 1:length(obj_list)) {
-      cur_obj <- obj_list[[i]]
+      cur_obj <- as.data.frame(obj_list[[i]])
       data_tabs <- rbind(data_tabs, cur_obj)
-      #print(names(obj_list[[i]]))
-      # cur_row <- data.frame(table_name = obj_list[[i]]$name, 
-      #                       table_id = obj_list[[i]]$id, 
-      #                       type = obj_list[[i]]$type, 
-      #                       version_number = obj_list[[i]]$versionNumber, 
-      #                       created_on = obj_list[[i]]$createdOn, 
-      #                       modified_on = obj_list[[i]]$modifiedOn)
-      # data_tabs <- rbind(cur_row, data_tabs)
     }
   }
   return(list(tables=data_tabs, synapse_objects = obj_list))
