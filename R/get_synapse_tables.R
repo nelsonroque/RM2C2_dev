@@ -10,7 +10,7 @@
 get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA) {
   if(!require(synapser)) {
     print("ERROR: Missing `synapser` package. Please run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
-    install_synapser()
+    RM2C2dev::install_synapser()
   } else {
     print("For the latest version of `synapser`, run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
     

@@ -21,7 +21,7 @@ download_synapse_table_all <- function(synapse_email = NA, synapse_pw = NA, syna
     results <- synapser::synTableQuery(query)
     
     #' get raw, unmanipulated dataframe matching query results
-    table <- as.data.frame(results)
+    table <- results$asDataFrame()
   }
   return(table)
 }
