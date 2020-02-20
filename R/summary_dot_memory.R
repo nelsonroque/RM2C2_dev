@@ -42,6 +42,12 @@ summary_dot_memory <- function(data, group_var, var_prefix = "dot_memory", exper
                     max_hausdorff_distance = max(hausdorff_distance, na.rm=T),
                     sd_hausdorff_distance = sd(hausdorff_distance, na.rm=T))
         
+        # summary.df <- df %>%
+        #   group_by_(.dots = group_var) %>%
+        #   summarise(n.correct.taps = sum(tap_correct[tap_correct == 1]),
+        #             n.total.taps = n()) %>%
+        #   mutate(n.incorrect.taps = n.total.taps - n.correct.taps)
+        
         summary_data <- summary_data %>% full_join(exp_summary_data)
         
         # add summary attribute

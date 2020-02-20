@@ -14,7 +14,7 @@ get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_proj
     print("For the latest version of `synapser`, run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
     
     #' login to synapse
-    synLogin(email = synapse_email, password = synapse_pw, rememberMe = T)
+    synapser::synLogin(email = synapse_email, password = synapse_pw, rememberMe = T)
     
     #' load all objects
     iterator <- synapser::synGetChildren(synapse_project_id, 
