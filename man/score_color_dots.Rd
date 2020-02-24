@@ -4,7 +4,7 @@
 \alias{score_color_dots}
 \title{RM2C2dev}
 \usage{
-score_color_dots(data)
+score_color_dots(data, threshold = 75)
 }
 \description{
 RM2C2dev

@@ -2,7 +2,7 @@
 #' @name score_color_dots
 #' @export
 #' @import tidyverse
-score_color_dots <- function(data) {
+score_color_dots <- function(data, threshold=75) {
   
   # check if data.frame or tibble
   if(is_data_frame_tibble(data)) {
