@@ -8,7 +8,7 @@ score_color_dots <- function(data) {
   if(is_data_frame_tibble(data)) {
     
     # score the data
-    scored <- df %>%
+    scored <- data %>%
       separate(Loc1, into=c("Loc1_x", "Loc1_y"), " ", convert=T) %>%
       separate(Loc2, into=c("Loc2_x", "Loc2_y"), " ", convert=T) %>%
       separate(Loc3, into=c("Loc3_x", "Loc3_y"), " ", convert=T) %>%
