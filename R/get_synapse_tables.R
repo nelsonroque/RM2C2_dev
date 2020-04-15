@@ -8,9 +8,7 @@
 #' @examples
 #' get_synapse_tables(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA)
 get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_project_id = NA) {
-  if(!require(synapser)) {
-    print("ERROR: Missing `synapser` package. Please run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
-  } else {
+
     print("For the latest version of `synapser`, run: install.packages('synapser', repos=c('https://sage-bionetworks.github.io/ran', 'http://cran.fhcrc.org'))")
     
     #' login to synapse
@@ -30,6 +28,6 @@ get_synapse_tables <- function(synapse_email = NA, synapse_pw = NA, synapse_proj
       cur_obj <- as.data.frame(obj_list[[i]])
       data_tabs <- rbind(data_tabs, cur_obj)
     }
-  }
+
   return(list(tables=data_tabs, synapse_objects = obj_list))
 }
