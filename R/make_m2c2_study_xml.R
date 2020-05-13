@@ -2,18 +2,11 @@
 #' @name make_m2c2_study_xml
 #' @export
 #' @import tidyverse
-make_m2c2_study_xml <- function(csv_file = "", menu_str = "", study_name="", study_servername = "", study_wave="", study_server = "https://m2c2.survey.psu.edu/eas", app_version= "1.3", debug=0) {
+make_m2c2_study_xml <- function(csv_file = "", menu_str = "", study_name="", study_servername = "", study_wave="", study_server = "https://m2c2.survey.psu.edu/eas", app_version = "1.3", debug=0) {
   STUDY_NAME = study_name
   STUDY_WAVE = study_wave
   STUDY_SERVER = study_server
   STUDY_SERVER_NAME = study_servername
-  
-  catn <- function(x, n=1) {
-    cat(x)
-    for(i in 1:n) {
-      cat("\n")
-    }
-  }
   
   # load file
   pack_raw <- read_csv(csv_file)
