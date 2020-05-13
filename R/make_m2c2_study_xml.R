@@ -138,7 +138,7 @@ make_m2c2_study_xml <- function(csv_file = "", menu_str = "", study_name="", stu
         catn(sprintf("<element type='radiobutton' id='%s' text='%s'>", question_id, cur_record_row$element_text))
         for(opt in 1:length(unique(cur_opt_list))) {
           cur_opt_clean = trimws(cur_opt_list[opt], which = c("both"))
-          catn(sprintf("<option text='%s'/>", cur_opt_clean))
+          catn(sprintf("<option text='%s' text='%s'/>", cur_opt_clean, cur_opt_clean))
         }
         catn("</element>")
       }
@@ -149,7 +149,7 @@ make_m2c2_study_xml <- function(csv_file = "", menu_str = "", study_name="", stu
         catn(sprintf("<element type='checkbox' id='%s' text='%s' subText='%s'>", question_id, cur_record_row$element_text, "Select all that apply."))
         for(opt in 1:length(unique(cur_opt_list))) {
           cur_opt_clean = trimws(cur_opt_list[opt], which = c("both"))
-          catn(sprintf("<option text='%s'/>", cur_opt_clean))
+          catn(sprintf("<option text='%s' text='%s'/>", cur_opt_clean, cur_opt_clean))
         }
         catn("</element>")
       }
