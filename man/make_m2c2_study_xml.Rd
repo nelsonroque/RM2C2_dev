@@ -8,9 +8,11 @@ make_m2c2_study_xml(
   csv_file = "",
   menu_str = "",
   study_name = "",
+  study_servername = "",
   study_wave = "",
   study_server = "https://m2c2.survey.psu.edu/eas",
-  app_version = "1.3"
+  app_version = "1.3",
+  debug = 0
 )
 }
 \description{
