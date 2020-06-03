@@ -8,6 +8,7 @@ download_synapse_table_from_start_date_plus(
   synapse_email = NA,
   synapse_pw = NA,
   synapse_id = NA,
+  date_col = "uploadDate",
   start_date = NA,
   search_op = ">="
 )
@@ -18,6 +19,8 @@ download_synapse_table_from_start_date_plus(
 \item{synapse_pw}{class: string}
 
 \item{synapse_id}{class: string}
+
+\item{date_col}{class: string}
 
 \item{start_date}{class: string}
 
