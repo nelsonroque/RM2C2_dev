@@ -219,9 +219,12 @@ make_m2c2_study_xml <- function(csv_file = "", menu_str = "", study_name="", stu
     #file.show(outfilename)
     catn("XML VALIDATION: SUCCESS")
     catn("-----------------------")
-    catn("NEXT STEPS:")
+    catn("MANUAL VERIFICATION:")
     catn("- search xml for [#], and replace with item #")
     catn("- search xml for [ELSE], and replace with branch_cond")
+    catn("NEXT STEPS:")
+    catn("- verify branching matches expectations")
+    catn("- verify formatting was applied matching expectations (e.g., bolded text is bold, if used [b]text[/b])")
   } else {
     catn("XML VALIDATION: FAILED")
     catn(row_count)
