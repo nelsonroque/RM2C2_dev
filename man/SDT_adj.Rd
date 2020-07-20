@@ -2,7 +2,7 @@
 % Please edit documentation in R/SDT_adj.R
 \name{SDT_adj}
 \alias{SDT_adj}
-\title{RM2C2: Scoring, Summarizing}
+\title{RM2C2dev: Scoring, Summarizing}
 \usage{
 SDT_adj(df, adj = 0.01)
 }
@@ -12,7 +12,7 @@ SDT_adj(df, adj = 0.01)
 \item{adj}{class: numeric; SDT adjustment}
 }
 \description{
-RM2C2: Scoring, Summarizing
+RM2C2dev: Scoring, Summarizing
 }
 \examples{
 SDT_adj(df, adj=0.01)
