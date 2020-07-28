@@ -9,7 +9,6 @@ score_shopping_list <- function(data) {
     
     # score the data
     scored <- data %>%
-      df %>%
       mutate(correct = ifelse(target_price == choice, 1, 0),
              choice_RT = choiceRT)
     
