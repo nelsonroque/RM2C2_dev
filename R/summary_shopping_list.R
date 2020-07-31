@@ -19,11 +19,11 @@ summary_shopping_list <- function(data, group_var, var_prefix = "shopping_list",
                   mean.RT.choice = mean(choice_RT, na.rm = T),
                   median.RT.choice = median(choice_RT, na.rm = T),
                   sd.RT.choice = sd(choice_RT, na.rm = T),
-                  n.correct = sum(correct),
-                  n.incorrect = sum(correct == 0 & phase == 2),
-                  n = max(trial_num[phase == 2])) %>%
-        mutate(prop.correct = n.correct/n,
-        prop.incorrect = n.incorrect/n)
+            n.correct = sum(correct == 1 & phase == 2),
+            n.incorrect = sum(correct == 0 & phase == 2, na.rm=T)) %>%
+  		mutate(n = n.correct + n.incorrect) %>%
+  		mutate(prop.correct = n.correct/n,
+  			   prop.incorrect = n.incorrect/n)
             
       if(experimental) {
         exp_summary_data <- data %>%

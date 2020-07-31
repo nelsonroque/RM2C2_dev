@@ -1,6 +1,6 @@
 Package: RM2C2dev
 Title: Scoring and Summarizing of Cognitive task data from the Mobile Monitoring of Cognitive Change Project (M2C2).
-Version: 0.0.0.0008
+Version: 0.0.0.0010
 Authors@R: 
     person(given = "Nelson",
            family = "Roque",
