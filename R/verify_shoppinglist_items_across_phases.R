@@ -15,7 +15,8 @@ verify_shoppinglist_items_across_phases <- function(filepath, debug=F) {
   
   check_df <- tibble()
   for(i in unique(sl_slim$cogtask_run_uuid)) {
-    cur_df <- sl_slim %>% filter(cogtask_run_uuid == i)
+    cur_df <- sl_slim %>% filter(cogtask_run_uuid == i) %>% distinct()
+    
     phase1 = cur_df %>% filter(phase == ".")
     phase2 = cur_df %>% filter(phase == "2")
     
