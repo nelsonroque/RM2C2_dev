@@ -7,7 +7,7 @@
 #' @import readr
 #' @examples
 #' verify_shoppinglist_items_across_phases(filepath, debug=T)
-verify_shoppinglist_items_across_phases <- function(filepath, debug=F) {
+verify_shoppinglist_items_across_phases <- function(filepath, debug=F, drop_dups = T) {
   sl_raw <- read_delim(filepath, "|", escape_double = FALSE, trim_ws = TRUE)
   
   sl_slim <- sl_raw %>%
@@ -15,7 +15,12 @@ verify_shoppinglist_items_across_phases <- function(filepath, debug=F) {
   
   check_df <- tibble()
   for(i in unique(sl_slim$cogtask_run_uuid)) {
-    cur_df <- sl_slim %>% filter(cogtask_run_uuid == i) %>% distinct()
+    
+    if(drop_dups) {
+      cur_df <- sl_slim %>% filter(cogtask_run_uuid == i) %>% distinct()
+    } else {
+      cur_df <- sl_slim %>% filter(cogtask_run_uuid == i)
+    }
     
     phase1 = cur_df %>% filter(phase == ".")
     phase2 = cur_df %>% filter(phase == "2")

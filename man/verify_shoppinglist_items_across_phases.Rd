@@ -4,7 +4,7 @@
 \alias{verify_shoppinglist_items_across_phases}
 \title{RM2C2dev}
 \usage{
-verify_shoppinglist_items_across_phases(filepath, debug = F)
+verify_shoppinglist_items_across_phases(filepath, debug = F, drop_dups = T)
 }
 \arguments{
 \item{filepath}{class: string}
