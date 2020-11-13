@@ -4,7 +4,7 @@
 \alias{produce_log_summary}
 \title{RM2C2dev}
 \usage{
-produce_log_summary(filepath, part_ids = NA, search_events = NA)
+produce_log_summary(filepath, part_ids = NA, search_events = NA, debug = F)
 }
 \description{
 RM2C2dev

@@ -3,7 +3,7 @@
 #' @export
 #' @import tidyverse
 #' @import anytime
-produce_log_summary <- function(filepath, part_ids=NA, search_events=NA) {
+produce_log_summary <- function(filepath, part_ids=NA, search_events=NA, debug=F) {
   
   if(is.na(part_ids)) {
     warning("set `part_ids` parameter (type = vector)")
@@ -27,6 +27,11 @@ produce_log_summary <- function(filepath, part_ids=NA, search_events=NA) {
   poss_hd1 <- unique(log_table_cc$header1)
   poss_hd2 <- unique(log_table_cc$header2)
   n_uniq_parts <- ruf::lenu(log_table_cc$participant_id) # get number of participants in log file
+  
+  if(debug) {
+    print(poss_hd1)
+    print(poss_hd2)
+  }
   
   notification_count_by_id <- log_table_cc %>%
     filter(participant_id %in% part_ids) %>%
