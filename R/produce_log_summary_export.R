@@ -14,7 +14,7 @@ produce_log_summary_export <- function(filepath, part_ids=NA, search_events=NA, 
   }
   
   # load in data ----
-  log_table <- read_delim("log_collection_log_2020_11_13_10_11.txt", delim="|")
+  log_table <- read_delim(filepath, delim="|")
   
   # tidy column names for later use ----
   log_table_cc <- log_table %>% 
