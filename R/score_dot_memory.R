@@ -2,13 +2,38 @@
 #' @name score_dot_memory
 #' @export
 #' @import tidyverse
-score_dot_memory <- function(data, square_size=5, n_dots=3) {
+score_dot_memory <- function(data, square_size=5, n_dots=3, grid_convert=F) {
+  
+  convert_dotmemory_grid_1d_2d <- function(v, grid_size=square_size) {
+    d_x = v%%grid_size
+    d_y = floor((v/grid_size))
+    return(paste0(d_x, "_", d_y))
+  }
   
   # check if data.frame or tibble
   if(is_data_frame_tibble(data)) {
     
+    if(grid_convert) {
+      data_p = data %>%
+        # from dot_locations to underscore delimited coord pairs (starting 0)
+        mutate(dot_locations_v1_candD = dot_locations,
+               user_answers_v1_candD = user_answers) %>%
+        select(-dot_locations, -user_answers) %>%
+        rowwise() %>%
+        mutate(dot1_conv = convert_dotmemory_grid_1d_2d(dot1), # insert translator
+               dot2_conv = convert_dotmemory_grid_1d_2d(dot2),
+               dot3_conv = convert_dotmemory_grid_1d_2d(dot3)) %>%
+        mutate(dot_locations = paste(dot1_conv, dot2_conv, dot3_conv)) %>%
+        mutate(resp1_conv = convert_dotmemory_grid_1d_2d(resp1), # insert translator
+               resp2_conv = convert_dotmemory_grid_1d_2d(resp2),
+               resp3_conv = convert_dotmemory_grid_1d_2d(resp3)) %>%
+        mutate(user_answers = paste(resp1_conv, resp2_conv, resp3_conv))
+    } else {
+      data_p = data
+    }
+    
     # score the data
-    scored <- data %>% 
+    scored <- data_p %>% 
       separate(dot_locations, c("dot1","dot2","dot3"), " ", convert=T) %>%
       separate(dot1, c("dot1_rx", "dot1_ry"), "_", convert=T) %>%
       separate(dot2, c("dot2_rx", "dot2_ry"), "_", convert=T) %>%

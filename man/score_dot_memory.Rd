@@ -4,7 +4,7 @@
 \alias{score_dot_memory}
 \title{RM2C2dev}
 \usage{
-score_dot_memory(data, square_size = 5, n_dots = 3)
+score_dot_memory(data, square_size = 5, n_dots = 3, grid_convert = F)
 }
 \description{
 RM2C2dev
