@@ -20,11 +20,10 @@ summary_orca <- function(data, group_var, var_prefix = "orca", experimental = F)
                   median.RT_incorrect = median(response_time[response_accuracy == F], na.rm=T),
                   sd.RT_incorrect = sd(response_time[response_accuracy == F], na.rm=T),
             n_correct = sum(response_accuracy == T),
-            n_incorrect = sum(response_accuracy == F)) %>%
-  		mutate(n_trials_sumcorrect_incorrect = n_correct + n_incorrect,
-  		       n_trials = n()) %>%
+            n_incorrect = sum(response_accuracy == F),
+            n_trials = n()) %>%
   		mutate(prop_correct = n_correct/n_trials,
-  			   prop_incorrect = n_incorrect/n_trials)
+  		       prop_incorrect = n_incorrect/n_trials)
             
       if(experimental) {
         exp_summary_data <- data %>%
