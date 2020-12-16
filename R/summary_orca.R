@@ -12,7 +12,7 @@ summary_orca <- function(data, group_var, var_prefix = "orca", experimental = F)
       
       # produce primary outcome summary
       summary_data <- data %>%
-        group_by_(.dots = group_var) %>%
+        group_by(.dots = group_var) %>%
         summarise(mean.RT_correct = mean(response_time[response_accuracy == T], na.rm=T),
                   median.RT_correct = median(response_time[response_accuracy == T], na.rm=T),
                   sd.RT_correct = sd(response_time[response_accuracy == T], na.rm=T),
