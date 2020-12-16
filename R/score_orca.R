@@ -10,8 +10,11 @@ score_orca <- function(data) {
     # score the data
     scored <- data %>%
       mutate(response_label = ifelse(response == 0, "no-match", "match"),
-             correct_response_label = ifelse(correct_response == 0, "no-match", "match")) %>%
-      mutate(response_accuracy = ifelse(response_label == correct_response_label, T, F))
+             correct_response_label = ifelse(correct_response == 0, "no-match", "match"),
+             phase_learning = grepl("_learning_", filename),
+             phase_recognition = grepl("_recognition_", filename)) %>%
+      mutate(response_accuracy = ifelse(response_label == correct_response_label, T, F),
+             task_phase = ifelse(phase_learning, "learning", "recognition"))
     
   } else {
     
