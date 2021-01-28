@@ -25,7 +25,6 @@ score_dot_memory_interference <- function(df, nontap_cols = c(1:33,35:37), tap_c
            tap_correct = as.numeric(as.character(tap_correct))) %>%
     mutate(is_data_restructured = TRUE)
   
-  
   # add processing hash and timestamp
   scored <- restructured %>%
     append_process_cols()
