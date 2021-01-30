@@ -15,8 +15,7 @@ score_dot_memory_interference <- function(df) {
            tap_correct = as.numeric(tap_correct),
            pixel_x = as.numeric(pixel_x),
            pixel_y = as.numeric(pixel_y)) %>% 
-    mutate(is_data_restructured = TRUE) %>%
-    mutate(timestamp_diff = timestamp - lag(timestamp))
+    mutate(is_data_restructured = TRUE)
   
   # add processing hash and timestamp
   scored <- restructured %>%
