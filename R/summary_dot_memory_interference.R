@@ -14,7 +14,8 @@ summary_dot_memory_interference <- function(data, group_var, var_prefix = "dot_m
       summary_data <- data %>%
         group_by(.dots = group_var) %>%
         summarise(n_correct_taps = sum(tap_correct[tap_correct == 1], na.rm=T),
-                  n_total_taps = n()) %>%
+                  n_total_taps = n(),
+                  mean_intertap_time_ms = mean(timestamp_diff, na.rm=T)) %>%
         mutate(n_incorrect_taps = n_total_taps - n_correct_taps) %>%
         mutate(tap_throughput = n_total_taps / total_time_exp,
                tap_throughput_correct = n_correct_taps / total_time_exp)
