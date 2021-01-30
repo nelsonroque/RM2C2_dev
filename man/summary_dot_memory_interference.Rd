@@ -8,7 +8,8 @@ summary_dot_memory_interference(
   data,
   group_var,
   var_prefix = "dot_memory",
-  experimental = F
+  experimental = F,
+  total_time_exp = NA
 )
 }
 \description{

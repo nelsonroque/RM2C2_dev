@@ -2,7 +2,7 @@
 #' @name summary_dot_memory_interference
 #' @export
 #' @import tidyverse
-summary_dot_memory_interference <- function(data, group_var, var_prefix = "dot_memory", experimental = F) {
+summary_dot_memory_interference <- function(data, group_var, var_prefix = "dot_memory", experimental = F, total_time_exp = NA) {
   
   # check if data.frame or tibble
   if(is_data_frame_tibble(data)) {
@@ -15,7 +15,9 @@ summary_dot_memory_interference <- function(data, group_var, var_prefix = "dot_m
         group_by(.dots = group_var) %>%
         summarise(n_correct_taps = sum(tap_correct[tap_correct == 1], na.rm=T),
                   n_total_taps = n()) %>%
-        mutate(n_incorrect_taps = n_total_taps - n_correct_taps)
+        mutate(n_incorrect_taps = n_total_taps - n_correct_taps) %>%
+        mutate(tap_throughput = n_total_taps / total_time_exp,
+               tap_throughput_correct = n_correct_taps / total_time_exp)
       
       if(experimental) {
         stop("Sorry, this function does not yet have experimental output.")
