@@ -4,11 +4,7 @@
 \alias{score_dot_memory_interference}
 \title{RM2C2dev: Scoring, Summarizing}
 \usage{
-score_dot_memory_interference(
-  df,
-  nontap_cols = c(1:33, 35:37),
-  tap_col = c(34)
-)
+score_dot_memory_interference(df)
 }
 \description{
 RM2C2dev: Scoring, Summarizing
