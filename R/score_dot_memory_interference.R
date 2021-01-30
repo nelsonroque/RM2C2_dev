@@ -8,7 +8,8 @@ score_dot_memory_interference <- function(df) {
     mutate(interference_locations = strsplit(as.character(interference_locations), " ")) %>% 
     unnest(interference_locations) %>%
     separate(interference_locations, c("timestamp", "interf_page", "tap_column", "tap_row", "tap_correct", "pixel_x", "pixel_y")) %>%
-    mutate(interf_page = as.numeric(interf_page),
+    mutate(timestamp = as.numeric(timestamp),
+           interf_page = as.numeric(interf_page),
            tap_row = as.numeric(tap_row),
            tap_column = as.numeric(tap_column),
            tap_correct = as.numeric(tap_correct),
