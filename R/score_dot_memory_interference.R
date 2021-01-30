@@ -4,7 +4,7 @@
 #' @export
 score_dot_memory_interference <- function(df) {
   
-  restructured <- .df %>%
+  restructured <- df %>%
     mutate(interference_locations = strsplit(as.character(interference_locations), " ")) %>% 
     unnest(interference_locations) %>%
     separate(interference_locations, c("timestamp", "interf_page", "tap_column", "tap_row", "tap_correct", "pixel_x", "pixel_y")) %>%
