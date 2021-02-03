@@ -25,7 +25,7 @@ jitter_beep_schedule <- function(schedule=NA, schedule_name="default", jitter_ti
   min_beep_time = min(jitter_schedule$startTime)
   
   # create concatenated schedule name
-  if(!is.na(jitter_days_by_ndays)){
+  if(is.na(jitter_days_by_ndays)){
     schedule_name_f = paste0(schedule_name, " - ",
                              label_dir, " ",
                              as.character(abs(jitter_time_by_hours)), " - ",
