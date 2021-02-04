@@ -9,6 +9,10 @@ jitter_beep_schedule <- function(schedule=NA, schedule_name="default", jitter_ti
   } else {
     if(jitter_time_by_hours < 0) {
       label_dir = "minus"
+    } else {
+      if(jitter_time_by_hours == 0) {
+        label_dir = "same"
+      }
     }
   }
   
@@ -24,13 +28,18 @@ jitter_beep_schedule <- function(schedule=NA, schedule_name="default", jitter_ti
   # calculate minimum beep time
   min_beep_time = min(jitter_schedule$startTime)
   
+  # first day in schedule
+  first_day = jitter_schedule$day[1]
+  
   # create concatenated schedule name
   if(is.na(jitter_days_by_ndays)){
     schedule_name_f = paste0(schedule_name, " - ",
+                             "(start ", first_day, ")",
                              "(",label_dir, " ",as.character(abs(jitter_time_by_hours)), ") - ",
                              "(earliest beep time: ", min_beep_time, ")")
   } else {
     schedule_name_f = paste0(schedule_name, " - ",
+                             "(start ", first_day, ")",
                              "(",label_dir, " ",as.character(abs(jitter_time_by_hours)), ") - ",
                              "(earliest beep time: ", min_beep_time, ")", " - ",
                              "(jitter by days: ", jitter_days_by_ndays, ")")
