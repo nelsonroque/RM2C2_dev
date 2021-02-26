@@ -1,16 +1,16 @@
 #' RM2C2dev
 #' @name find_weekday
 #' @export
-find_weekday <- function(wday="Sun", days = 1, weekstart = "Sun") {
+find_weekday <- function(wday="sun", days = 1, weekstart = "sun") {
   if(days > 7) {
     stop("Error. Support not available for jittering more than 7 days")
   }
   
   # determine week start by user input
-  if(weekstart == "Sun") {
-    days_table = c("Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat")
+  if(weekstart == "sun") {
+    days_table = c("sun", "mon", "tues", "wed", "thurs", "fri", "sat")
   } else {
-    days_table = c("Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun")
+    days_table = c("mon", "tues", "wed", "thurs", "fri", "sat", "sun")
   }
   
   # check current index

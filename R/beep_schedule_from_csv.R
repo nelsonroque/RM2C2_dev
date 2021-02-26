@@ -30,7 +30,7 @@ beep_schedule_from_csv <- function(filename=NA, schedule=NA, schedule_public_lab
   
   # set base xml -----
   RM2C2dev::catn(paste0("<beepSchedule>"))
-  RM2C2dev::catn(paste0("<beepScheduleInfo name='", schedule_public_label, "'>"))
+  RM2C2dev::catn(paste0("<beepScheduleInfo name='", schedule_public_label, "'/>"))
   
   # iterate over packs to create nested schedule ------
   for(pack in unique_packs) {
@@ -51,7 +51,7 @@ beep_schedule_from_csv <- function(filename=NA, schedule=NA, schedule_public_lab
                           "' beepInterval='",cur_row$beepInterval,
                           "' firstBeepOffset='",cur_row$beepInterval,
                           "' allowCount='",cur_row$allowCount,
-                          "'>")
+                          "'/>")
       RM2C2dev::catn(active_tag)
     }
     
