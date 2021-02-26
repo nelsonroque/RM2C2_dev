@@ -30,14 +30,14 @@ beep_schedule_from_csv <- function(filename=NA, schedule=NA, schedule_public_lab
   
   # set base xml -----
   RM2C2dev::catn(paste0("<beepSchedule>"))
-  RM2C2dev::catn(paste0("<beepScheduleInfo name='", schedule_public_label, "'/>"))
+  RM2C2dev::catn(paste0('<beepScheduleInfo name="', schedule_public_label, '"/>'))
   
   # iterate over packs to create nested schedule ------
   for(pack in unique_packs) {
     pack_data = template_schedule_ord %>% filter(pack_id == pack)
     
     # start pack schedule
-    pack_open = paste0("<PackSchedule pack_id='", pack, "' activeType=","'dayweek'",">")
+    pack_open = paste0('<PackSchedule pack_id="', pack, '" activeType="dayweek">')
     RM2C2dev::catn(pack_open)
     
     # iterate over pack data to create pack schedules
@@ -45,13 +45,13 @@ beep_schedule_from_csv <- function(filename=NA, schedule=NA, schedule_public_lab
       cur_row = pack_data[row,]
       
       # specify active tag for the PackSchedule
-      active_tag = paste0("<active day='", cur_row$day,
-                          "' startTime='",cur_row$startTime,
-                          "' endTime='",cur_row$endTime,
-                          "' beepInterval='",cur_row$beepInterval,
-                          "' firstBeepOffset='",cur_row$beepInterval,
-                          "' allowCount='",cur_row$allowCount,
-                          "'/>")
+      active_tag = paste0('<active day="', cur_row$day,
+                          '" startTime="',cur_row$startTime,
+                          '" endTime="',cur_row$endTime,
+                          '" beepInterval="',cur_row$beepInterval,
+                          '" firstBeepOffset="',cur_row$beepInterval,
+                          '" allowCount="',cur_row$allowCount,
+                          '"/>')
       RM2C2dev::catn(active_tag)
     }
     
