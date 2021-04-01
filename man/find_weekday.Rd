@@ -4,7 +4,7 @@
 \alias{find_weekday}
 \title{RM2C2dev}
 \usage{
-find_weekday(wday = "Sun", days = 1, weekstart = "Sun")
+find_weekday(wday = "sun", days = 1, weekstart = "sun")
 }
 \description{
 RM2C2dev
