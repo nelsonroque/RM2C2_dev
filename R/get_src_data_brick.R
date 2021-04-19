@@ -3,7 +3,7 @@
 #' @export
 #' @import tidyverse
 get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA, 
-                               user_id = NA, user_pass = NA, packs = NA) {
+                               user_id = NA, user_pass = NA, packs = NA, app_version=1.3) {
   
   # setup base flags for server login
   server_parsedata <- "true"
@@ -61,10 +61,19 @@ get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA,
     print(i)
     survey_filename <- files_in_zip[grepl(i, files_in_zip)]
     survey_raw <- RM2C2dev::read_m2c2_local(survey_filename, na=".")
-    survey_slim <- survey_raw %>%
-      select(participant_id, session_id, device_id, start_timestamp, end_timestamp, 
-             exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
-      mutate(survey_type = i)
+    
+    if(app_version <= 1.3) {
+      survey_slim <- survey_raw %>%
+        select(participant_id, session_id, matches("device_id|installation_number"), start_timestamp, end_timestamp, 
+               exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
+        mutate(survey_type = i)
+    } else {
+      survey_slim <- survey_raw %>%
+        select(participant_id, session_id, installation_number, start_timestamp, end_timestamp, 
+               exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
+        mutate(survey_type = i)
+    }
+
     
     pack_list[[i]] <- survey_slim
   }
