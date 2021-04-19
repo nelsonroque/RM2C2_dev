@@ -4,7 +4,7 @@
 \alias{add_pipeline_flags}
 \title{RM2C2dev}
 \usage{
-add_pipeline_flags(pack_list)
+add_pipeline_flags(pack_list, app_version = 1.3)
 }
 \description{
 RM2C2dev

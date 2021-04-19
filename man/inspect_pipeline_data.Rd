@@ -4,7 +4,7 @@
 \alias{inspect_pipeline_data}
 \title{RM2C2dev}
 \usage{
-inspect_pipeline_data(pack_list)
+inspect_pipeline_data(pack_list, app_version = 1.3)
 }
 \description{
 RM2C2dev

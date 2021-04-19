@@ -9,7 +9,8 @@ generate_daily_report(
   ignore_packs = NULL,
   by_pack = F,
   plot = F,
-  debug = F
+  debug = F,
+  app_version = 1.3
 )
 }
 \description{

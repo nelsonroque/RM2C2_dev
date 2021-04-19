@@ -10,7 +10,8 @@ get_src_data_brick(
   study_code = NA,
   user_id = NA,
   user_pass = NA,
-  packs = NA
+  packs = NA,
+  app_version = 1.3
 )
 }
 \description{
