@@ -17,7 +17,7 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
       summarise(min_date = min(dt_doy))
   } else {
     person_min_dates <- pack_df %>%
-      group_by(participant_id, installation_number) %>%
+      group_by(participant_id, install_number) %>%
       summarise(min_date = min(dt_doy))
   }
 
@@ -39,7 +39,7 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
       else {
         all_slim_check <- pack_df %>%
           filter(survey_type %nin% ignore_packs) %>%
-          group_by(participant_id, installation_number, survey_type, dt_doy) %>%
+          group_by(participant_id, install_number, survey_type, dt_doy) %>%
           summarise(n_records = n())
       }
 
@@ -52,7 +52,7 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
       } else {
         all_slim_check <- pack_df %>%
           filter(survey_type %nin% ignore_packs) %>%
-          group_by(participant_id, installation_number, dt_doy) %>%
+          group_by(participant_id, install_number, dt_doy) %>%
           summarise(n_records = n())
       }
 
@@ -66,7 +66,7 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
           summarise(n_records = n())
       } else {
         all_slim_check <- pack_df %>%
-          group_by(participant_id, survey_type, installation_number, dt_doy) %>%
+          group_by(participant_id, survey_type, install_number, dt_doy) %>%
           summarise(n_records = n())
       }
 
@@ -77,7 +77,7 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
           summarise(n_records = n())
       } else {
         all_slim_check <- pack_df %>%
-          group_by(participant_id, installation_number, dt_doy) %>%
+          group_by(participant_id, install_number, dt_doy) %>%
           summarise(n_records = n())
       }
 

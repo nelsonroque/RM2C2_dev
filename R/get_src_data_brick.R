@@ -64,7 +64,7 @@ get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA,
     
     if(app_version <= 1.3) {
       survey_slim <- survey_raw %>%
-        select(participant_id, session_id, matches("device_id|installation_number"), start_timestamp, end_timestamp, 
+        select(participant_id, session_id, matches("device_id|install_number"), start_timestamp, end_timestamp, 
                exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
         mutate(survey_type = i)
     } else {

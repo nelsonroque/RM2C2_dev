@@ -57,7 +57,7 @@ inspect_pipeline_data <- function(pack_list, app_version = 1.3) {
     paradata_datatset <- all_slim_check %>%
       group_by(participant_id, installation_number, exit_status) %>%
       summarise(n = n()) %>%
-      pivot_wider(id_cols = c("participant_id", "device_id"), names_from = exit_status, values_from = c("n")) %>%
+      pivot_wider(id_cols = c("participant_id", "install_number"), names_from = exit_status, values_from = c("n")) %>%
       mutate(part_id_len = str_length(participant_id)) %>%
       filter(part_id_len < 7) %>%
       ruf::make_tidy_colnames() %>%
