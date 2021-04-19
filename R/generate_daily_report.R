@@ -3,7 +3,7 @@
 #' @export
 #' @import tidyverse
 #' @import anytime
-generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plot=F, debug=F) {
+generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plot=F, debug=F, app_version=1.3) {
   `%nin%` <- Negate("%in%")
   
   pack_df <- bind_rows(pack_list) %>%
@@ -11,9 +11,16 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
     select(participant_id, dt_doy, session_id, everything()) %>%
     arrange(participant_id, dt_doy)
   
-  person_min_dates <- pack_df %>%
-    group_by(participant_id, device_id) %>%
-    summarise(min_date = min(dt_doy))
+  if(app_version <= 1.3) {
+    person_min_dates <- pack_df %>%
+      group_by(participant_id, device_id) %>%
+      summarise(min_date = min(dt_doy))
+  } else {
+    person_min_dates <- pack_df %>%
+      group_by(participant_id, installation_number) %>%
+      summarise(min_date = min(dt_doy))
+  }
+
   
   if(debug) {
     View(pack_df)
@@ -23,26 +30,57 @@ generate_daily_report <- function(pack_list, ignore_packs = NULL, by_pack=F, plo
   # filter packs if requested
   if(!is.null(ignore_packs)) {
     if(by_pack) {
-      all_slim_check <- pack_df %>%
-        filter(survey_type %nin% ignore_packs) %>%
-        group_by(participant_id, device_id, survey_type, dt_doy) %>%
-        summarise(n_records = n())
+      if(app_version <= 1.3) {
+        all_slim_check <- pack_df %>%
+          filter(survey_type %nin% ignore_packs) %>%
+          group_by(participant_id, device_id, survey_type, dt_doy) %>%
+          summarise(n_records = n())
+      }
+      else {
+        all_slim_check <- pack_df %>%
+          filter(survey_type %nin% ignore_packs) %>%
+          group_by(participant_id, installation_number, survey_type, dt_doy) %>%
+          summarise(n_records = n())
+      }
+
     } else {
-      all_slim_check <- pack_df %>%
-        filter(survey_type %nin% ignore_packs) %>%
-        group_by(participant_id, device_id, dt_doy) %>%
-        summarise(n_records = n())
+      if(app_version <= 1.3) {
+        all_slim_check <- pack_df %>%
+          filter(survey_type %nin% ignore_packs) %>%
+          group_by(participant_id, device_id, dt_doy) %>%
+          summarise(n_records = n())
+      } else {
+        all_slim_check <- pack_df %>%
+          filter(survey_type %nin% ignore_packs) %>%
+          group_by(participant_id, installation_number, dt_doy) %>%
+          summarise(n_records = n())
+      }
+
     }
 
   } else {
     if(by_pack) {
-    all_slim_check <- pack_df %>%
-      group_by(participant_id, survey_type, device_id, dt_doy) %>%
-      summarise(n_records = n())
+      if(app_version <= 1.3) {
+        all_slim_check <- pack_df %>%
+          group_by(participant_id, survey_type, device_id, dt_doy) %>%
+          summarise(n_records = n())
+      } else {
+        all_slim_check <- pack_df %>%
+          group_by(participant_id, survey_type, installation_number, dt_doy) %>%
+          summarise(n_records = n())
+      }
+
     } else {
-      all_slim_check <- pack_df %>%
-        group_by(participant_id, device_id, dt_doy) %>%
-        summarise(n_records = n())
+      if(app_version <= 1.3) {
+        all_slim_check <- pack_df %>%
+          group_by(participant_id, device_id, dt_doy) %>%
+          summarise(n_records = n())
+      } else {
+        all_slim_check <- pack_df %>%
+          group_by(participant_id, installation_number, dt_doy) %>%
+          summarise(n_records = n())
+      }
+
     }
   }
   
