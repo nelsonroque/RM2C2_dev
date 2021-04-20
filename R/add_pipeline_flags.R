@@ -30,7 +30,7 @@ add_pipeline_flags <- function(pack_list, app_version = 1.3) {
   } else {
     all_slim_check <- pack_df %>%
       arrange(participant_id, session_id, start_timestamp) %>%
-      group_by(participant_id, installation_number) %>%
+      group_by(participant_id, install_number) %>%
       arrange(session_id) %>%
       mutate(dt_doy = lubridate::yday(start_timestamp),
              next_session_id = lead(session_id),
