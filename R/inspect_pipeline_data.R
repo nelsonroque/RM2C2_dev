@@ -42,20 +42,20 @@ inspect_pipeline_data <- function(pack_list, app_version = 1.3) {
              normal_timeout_ratio_adj = normal_timeout_ratio / n_sessions)
   } else {
     hour2_sessions_ids_timestamps <- hour2_sessions %>%
-      select(participant_id, installation_number, session_id, start_timestamp, end_timestamp, session_hours, session_minutes) %>%
+      select(participant_id, install_number, session_id, start_timestamp, end_timestamp, session_hours, session_minutes) %>%
       distinct() %>%
       arrange(-session_hours)
     
     paradata_datatset_nsessions <- all_slim_check %>%
       mutate(qbert = difftime(anytime::anytime(end_timestamp), anytime::anytime(start_timestamp), units="secs")) %>%
-      group_by(participant_id, installation_number) %>%
+      group_by(participant_id, install_number) %>%
       summarise(n_sessions = n(),
                 mean_qbert = mean(as.numeric(qbert), na.rm=T),
                 median_qbert = median(as.numeric(qbert), na.rm=T),
                 sd_qbert = sd(as.numeric(qbert), na.rm=T))
     
     paradata_datatset <- all_slim_check %>%
-      group_by(participant_id, installation_number, exit_status) %>%
+      group_by(participant_id, install_number, exit_status) %>%
       summarise(n = n()) %>%
       pivot_wider(id_cols = c("participant_id", "install_number"), names_from = exit_status, values_from = c("n")) %>%
       mutate(part_id_len = str_length(participant_id)) %>%
