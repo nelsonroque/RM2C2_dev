@@ -13,9 +13,9 @@ summary_gonogo_fade <- function(data, group_var, var_prefix = "gonogofade", expe
       # produce primary outcome summary
       summary_data <- data %>%
         group_by_(.dots = group_var) %>%
-        summarise(median_response_time_all_trials = median(response_time[response_time != -1], na.rm=T),
-                  median_response_time_correct_trials = median(response_time[response_time != -1 & accuracy == 1], na.rm=T),
-                  median_response_time_error_trials = median(response_time[response_time != -1 & accuracy == 0], na.rm=T),
+        summarise(median_response_time_all_trials = median(responseTime[responseTime != -1], na.rm=T),
+                  median_response_time_correct_trials = median(responseTime[responseTime != -1 & accuracy == 1], na.rm=T),
+                  median_response_time_error_trials = median(responseTime[responseTime != -1 & accuracy == 0], na.rm=T),
                   n_accurate_trials = sum(accuracy),
                   n_error_trials = n() - sum(accuracy),
                   n_trials = n())
@@ -23,9 +23,9 @@ summary_gonogo_fade <- function(data, group_var, var_prefix = "gonogofade", expe
       if(experimental) {
         exp_summary_data <- data %>%
           group_by_(.dots = group_var) %>%
-          summarise(sd_response_time_all_trials = sd(response_time[response_time != -1], na.rm=T),
-                    sd_response_time_accurate_trials = sd(response_time[response_time != -1 & accuracy == 1], na.rm=T),
-                    sd_response_time_error_trials = sd(response_time[response_time != -1 & accuracy == 0], na.rm=T))
+          summarise(sd_response_time_all_trials = sd(responseTime[responseTime != -1], na.rm=T),
+                    sd_response_time_accurate_trials = sd(responseTime[responseTime != -1 & accuracy == 1], na.rm=T),
+                    sd_response_time_error_trials = sd(responseTime[responseTime != -1 & accuracy == 0], na.rm=T))
         
         summary_data <- summary_data %>% full_join(exp_summary_data)
         
