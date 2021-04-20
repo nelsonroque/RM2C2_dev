@@ -68,10 +68,20 @@ get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA,
                exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
         mutate(survey_type = i)
     } else {
-      survey_slim <- survey_raw %>%
-        select(participant_id, session_id, installation_number, start_timestamp, end_timestamp, 
-               exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
-        mutate(survey_type = i)
+      if(app_version == "cheatcode") {
+        survey_slim <- survey_raw %>%
+          select(participant_id, session_uuid, session_id, install_number, start_timestamp, end_timestamp, 
+                 launch_type, beep_file, beep_time_target, beep_time_actual,
+                 pack_id, launcher_file, build_date, application_version,
+                 device_manufacturer, device_model, os, os_version,
+                 exit_status, exit_status_detail, exit_screen, contains("_run_uuid")) %>%
+          mutate(survey_type = i)
+      } else {
+        survey_slim <- survey_raw %>%
+          select(participant_id, session_id, install_number, start_timestamp, end_timestamp, 
+                 exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
+          mutate(survey_type = i)
+      }
     }
 
     
