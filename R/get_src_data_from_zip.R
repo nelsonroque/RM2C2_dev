@@ -12,7 +12,7 @@ get_src_data_from_zip <- function(study_id, zip_filename = NA, packs = NA) {
   
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
-  #score and summarise data
+  # list files
   files_in_zip <- list.files(server_unzip_outname, recursive=T, full.names=T, pattern="*.txt")
   
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

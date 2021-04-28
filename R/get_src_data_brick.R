@@ -2,8 +2,14 @@
 #' @name get_src_data_brick
 #' @export
 #' @import tidyverse
-get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA, 
-                               user_id = NA, user_pass = NA, packs = NA, app_version=1.3) {
+get_src_data_brick <- function(study_id = NA, 
+                               server_url = NA, 
+                               study_code = NA, 
+                               user_id = NA, 
+                               user_pass = NA, 
+                               packs = NA, 
+                               participant_ids = NA,
+                               app_version=1.3) {
   
   # setup base flags for server login
   server_parsedata <- "true"
@@ -22,15 +28,29 @@ get_src_data_brick <- function(study_id = NA, server_url = NA, study_code = NA,
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
   # create list with parameters expected by data download endpoint ----
-  login <- list(
-    study_id = server_creds$studyname,
-    parsed = server_parsedata,
-    security_code = server_creds$study_code,
-    auth_token = RM2C2dev::get_m2c2_auth_token(server_url = server_url, 
-                                               user_id = user_id, 
-                                               password = user_pass, 
-                                               study_id = study_id)
-  )
+  
+  if(!is.na(participant_ids)) {
+    login <- list(
+      study_id = server_creds$studyname,
+      parsed = server_parsedata,
+      participant_id_select = participant_ids,
+      security_code = server_creds$study_code,
+      auth_token = RM2C2dev::get_m2c2_auth_token(server_url = server_url, 
+                                                 user_id = user_id, 
+                                                 password = user_pass, 
+                                                 study_id = study_id)
+    )
+  } else {
+    login <- list(
+      study_id = server_creds$studyname,
+      parsed = server_parsedata,
+      security_code = server_creds$study_code,
+      auth_token = RM2C2dev::get_m2c2_auth_token(server_url = server_url, 
+                                                 user_id = user_id, 
+                                                 password = user_pass, 
+                                                 study_id = study_id)
+    )
+  }
   
   # # download zip file with parsed data ----
   zip_result <- RM2C2dev::download_zip_server(url = server_creds$url,
