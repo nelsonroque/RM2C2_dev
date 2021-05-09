@@ -1,8 +1,8 @@
 #' RM2C2dev
-#' @name get_src_data_brick
+#' @name get_src_data_list
 #' @export
 #' @import tidyverse
-get_src_data_brick <- function(study_id = NA, 
+get_src_data_list <- function(study_id = NA, 
                                server_url = NA, 
                                study_code = NA, 
                                user_id = NA, 
@@ -48,7 +48,7 @@ get_src_data_brick <- function(study_id = NA,
     )
   }
   
-  # # download zip file with parsed data
+  # download zip file with parsed data ----
   zip_result <- RM2C2dev::download_zip_server(url = server_creds$url,
                                               params = login,
                                               save_filename = server_zip_outname,
@@ -56,7 +56,7 @@ get_src_data_brick <- function(study_id = NA,
                                               unzip=F,
                                               remove_zip=F)
   
-  # # unzip folder with known directory name
+  # unzip folder with known directory name ----
   unzip_dir <- unzip(zip_result$zip_location, exdir = server_unzip_outname)
   
   #score and summarise data
@@ -70,33 +70,13 @@ get_src_data_brick <- function(study_id = NA,
   
   # for each pack, get columns of interest
   for(i in unique_packs) {
-    print(i)
+    print(paste0("Reading pack_id: ", i))
+    
+    # search for pack
     survey_filename <- files_in_zip[grepl(i, files_in_zip)]
     survey_raw <- RM2C2dev::read_m2c2_local(survey_filename, na=".")
     
-    if(app_version <= 1.3) {
-      survey_slim <- survey_raw %>%
-        select(participant_id, session_id, matches("device_id|install_number"), start_timestamp, end_timestamp, 
-               exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
-        mutate(survey_type = i)
-    } else {
-      if(app_version == "cheatcode") {
-        survey_slim <- survey_raw %>%
-          select(participant_id, session_uuid, session_id, install_number, start_timestamp, end_timestamp, 
-                 launch_type, beep_file, beep_time_target, beep_time_actual,
-                 pack_id, launcher_file, build_date, application_version,
-                 device_manufacturer, device_model, os, os_version,
-                 exit_status, exit_status_detail, exit_screen, contains("_run_uuid")) %>%
-          mutate(survey_type = i)
-      } else {
-        survey_slim <- survey_raw %>%
-          select(participant_id, session_id, install_number, start_timestamp, end_timestamp, 
-                 exit_status, exit_status_detail, exit_screen, beep_file, contains("_run_uuid")) %>%
-          mutate(survey_type = i)
-      }
-    }
-
-    
+    # save data into list
     pack_list[[i]] <- survey_slim
   }
   

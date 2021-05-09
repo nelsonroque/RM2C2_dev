@@ -7,15 +7,11 @@ get_src_data_from_zip <- function(study_id, zip_filename = NA, packs = NA) {
   # setup base flags for server login
   server_unzip_outname <- paste0("m2c2_zip_out_", study_id)
   
-  # # unzip folder with known directory name ----
+  # # unzip folder with known directory name
   unzip_dir <- unzip(zip_filename, exdir = server_unzip_outname)
-  
-  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
   # list files
   files_in_zip <- list.files(server_unzip_outname, recursive=T, full.names=T, pattern="*.txt")
-  
-  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
   # get unique_packs
   unique_packs = unique(packs)
@@ -36,13 +32,9 @@ get_src_data_from_zip <- function(study_id, zip_filename = NA, packs = NA) {
     pack_list[[i]] <- survey_slim
   }
   
-  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  
-  # remove folder that unzips at the end of the process -----
+  # remove folder that unzips at the end of the process
   # so files don't get mixed on the next run
   unlink(server_unzip_outname, recursive = T, force = T)
 
-  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  
   return(pack_list)
 }
