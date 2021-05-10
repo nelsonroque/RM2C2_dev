@@ -26,6 +26,7 @@ get_src_data_list <- function(study_id = NA,
   # create list with parameters expected by data download endpoint ----
   
   if(!is.na(participant_ids)) {
+    batch_mode = T
     login <- list(
       study_id = server_creds$studyname,
       parsed = server_parsedata,
@@ -74,12 +75,27 @@ get_src_data_list <- function(study_id = NA,
     
     # search for pack
     survey_filename <- files_in_zip[grepl(i, files_in_zip)]
-    survey_raw <- RM2C2dev::read_m2c2_local(survey_filename, na=".")
     
-    # save data into list
-    pack_list[[i]] <- survey_slim
-  }
+    if(purrr::is_empty(survey_filename)) {
+      survey_raw <- tibble(errors = c("file does not exist"), filename = c(survey_filename))
+    } else {
+      if(file.exists(survey_filename)) {
+        survey_raw <- RM2C2dev::read_m2c2_local(survey_filename, na=".")
+      } else {
+        survey_raw <- tibble(errors = c("file read error"), filename = c(survey_filename))
+      }
+    }
+    
+    if(batch_mode == T) {
+      # save data into list
+      pack_list[[i]] <- survey_raw
+    } else {
+      # save data into list
+      pack_list[[i]] <- survey_raw
+    }
   
+  }
+
   # remove folder that unzips at the end of the process -----
   # so files don't get mixed on the next run
   unlink(server_unzip_outname, recursive = T, force = T)
