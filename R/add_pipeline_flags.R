@@ -45,7 +45,7 @@ add_pipeline_flags <- function(pack_list, app_version = 1.3) {
       rowwise() %>%
       mutate(flag_session_complete = if_else((flag_status_normal | flag_status_minimize_forceclose) & (flag_exitscreen_closing | flag_exitscreen_thankyou), TRUE, FALSE)) %>%
       mutate(flag_valid_survey_complete = if_else(flag_session_complete & survey_type != "checkin", TRUE, FALSE)) %>%
-      group_by(participant_id, device_id, session_id) %>%
+      group_by(participant_id, install_number, session_id) %>%
       mutate(flag_session_count = row_number()) %>%
       mutate(session_hours = difftime(anytime::anytime(end_timestamp), anytime::anytime(start_timestamp), units="hours"),
              session_minutes = difftime(anytime::anytime(end_timestamp), anytime::anytime(start_timestamp), units="min"))
