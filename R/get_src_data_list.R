@@ -24,7 +24,7 @@ get_src_data_list <- function(study_id = NA,
                                  study_code = study_code)
   
   # create list with parameters expected by data download endpoint ----
-  
+  batch_mode =F
   if(!is.na(participant_ids)) {
     batch_mode = T
     login <- list(
